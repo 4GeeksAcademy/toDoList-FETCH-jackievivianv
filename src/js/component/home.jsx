@@ -139,15 +139,17 @@ const Home = () => {
 	  }
   
 	  function handleRemoveItem(index) {
-		  setList((prevList) => prevList.filter((_, i) => i !== index));
-		  actualizarTareas(list);
-		}
-  
-	  function handleSaveTask(item, index){
-	  //const listTaskD = setTasksDone((prevList) => prevList.filter((_, i) => i === index));
-		  setTasksDone(tasksDone.concat(item))
-		  setList((prevList) => prevList.filter((_, i) => i !== index));
-			console.log(tasksDone);
+		const updatedList = list.filter((_, i) => i !== index);
+		setList(updatedList);
+		actualizarTareas(updatedList);
+	  }
+	
+	  function handleSaveTask(item, index) {
+		setTasksDone(tasksDone.concat(item));
+		const updatedList = list.filter((_, i) => i !== index);
+		setList(updatedList);
+		console.log(tasksDone);
+		actualizarTareas(updatedList);
 	  }
   
 	  function handleList(event){
@@ -188,7 +190,7 @@ const Home = () => {
 					
 				  <ul className="alert-heading text-dark pt-1"><strong>These are the tasks that you have done:</strong> 
 				  {tasksDone.map((item, index) => 
-					  <li key={index} className="mb-0 text-secondary" style={{ listStyleType: "none" }}>{item}</li>
+					  <li key={index} className="mb-0 text-secondary" style={{ listStyleType: "none" }}>{item.label}</li>
 				  )}
 				  </ul>
 			  </div>
