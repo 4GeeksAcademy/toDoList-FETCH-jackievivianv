@@ -22,29 +22,13 @@ const Home = () => {
 		{ label: "Do the replits", done: false }
 	]
 	
-	//useEffect(() => {
-
-	/*function saveTaskFetch(task){
-
-	const apiUrl = 'https://playground.4geeks.com/apis/fake/todos/user/jackievivianv'
-
-	const requestOptions = {
-		method: 'POST',
-		headers: {
-		  'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({ task: task }),
-	  };
-	  */
-
-	/*useEffect(() => {
-
+	useEffect(() => {
 	fetch('https://playground.4geeks.com/apis/fake/todos/user/jackievivianv', {	
 	 method: 'POST',
 	 headers: {
 		  'Content-Type': 'application/json',
 		},
-	 body: JSON.stringify(newUser),
+	 body: JSON.stringify([]),
 	
 	})
 
@@ -56,18 +40,14 @@ const Home = () => {
     .then(data => {
         // Here is where your code should start after the fetch finishes
         console.log(data); // This will print on the console the exact object received from the server
-		setList(data);
+		//setList(data);
     })
     .catch(error => {
         console.log(error);
     });
+	}, []);
 
-
-}, []);
-*/
-
-
-function actualizarTareas(tarea){
+	function actualizarTareas(tarea){
 	fetch('https://playground.4geeks.com/apis/fake/todos/user/jackievivianv', {	
 	 method: 'PUT',
 	 headers: {
@@ -91,7 +71,7 @@ function actualizarTareas(tarea){
         console.log(error);
     });
 
- }
+ 	}
 
 
 	useEffect(() => {
@@ -114,13 +94,13 @@ function actualizarTareas(tarea){
     })
     .then(data => {
         console.log(data); // This will print on the console the exact object received from the server
-		setList(data);
+		//setList(data);
     })
     .catch(error => {
         console.log(error);
     });
 	};
-
+ 
 	
 
 	/*fetch(apiUrl, requestOptions)
@@ -167,7 +147,7 @@ function actualizarTareas(tarea){
 	  //const listTaskD = setTasksDone((prevList) => prevList.filter((_, i) => i === index));
 		  setTasksDone(tasksDone.concat(item))
 		  setList((prevList) => prevList.filter((_, i) => i !== index));
-		   console.log(tasksDone);
+			console.log(tasksDone);
 	  }
   
 	  function handleList(event){
@@ -199,7 +179,7 @@ function actualizarTareas(tarea){
 						  <span onClick={() => handleSaveTask(item, index)} style={{fontSize: "small"}} className={`text-secondary ${hoverIndex === index ? visible : "d-none"}`} > ✔</span>
 						  </div>
 					  </li>
-					)): "No se agregaron tareas"}
+					)): <p className="d-flex justify-content-center">No se agregaron tareas</p>}
 			  </ul>
 			  <div className="container d-flex justify-content-around">
 			  <button className="bg-dark rounded-4 text-light p-2 m-2 justify-content-around" onClick={handleVisibleAlert} style={{fontFamily: "cursive"}}>Tasks Done</button>
